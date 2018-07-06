@@ -75,7 +75,7 @@ def convert_to_tfrecord(dataset_name, data_directory, class_map, segments=1, dir
                 
                 features = {
                     'label': _int64_feature(class_map[label]),
-                    'text_label': _bytes_feature(label),
+                    'text_label': _bytes_feature(label.encode()),
                     'image': _bytes_feature(image_raw)
                 }
                 example = tf.train.Example(features=tf.train.Features(feature=features))
